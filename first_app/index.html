@@ -7,14 +7,39 @@
 </head>
 <body>
     <script src="https://unpkg.com/vue@next"></script>
-    <div id="app">{{text}}</div>
+    <div id="app">
+      <!-- <h1>{{titulo}}</h1>
+      <h1>{{subtitulo}}</h1> -->
+    </div>
     <script>
-        Vue.createApp({
+        const vm = Vue.createApp({
             data(){
               return {
-                text: 'Hola vue'
+                titulo: 'Hola vue', 
+                subtitulo: 'un subtitulo',
+                dataHTML: '<p>esto es un html</p>',
+
+                //Atributos de una imagen
+                dataImg: 'https://cdn.pixabay.com/photo/2022/12/12/12/58/dog-7651002_960_720.jpg', 
+                src:'src',
+                alt:'alt',
               }
-            }
+            }, 
+            template:`
+
+              <h1>{{titulo}}</h1>
+              <h1>{{subtitulo}}</h1>
+
+              <!-- Directiva v-text="nombreVariable" para interpolar solo texto -->
+              <h1 v-text="titulo"></h1>
+
+              <!-- DIRECTIVA v-html="nombre variable" para incluir elementos html -->
+              <div v-html="dataHTML"></div>
+
+              <!-- ATRIBUTOS DE UNA IMAGEN -->
+              <img v-bind:[src]="dataImg" v-bind:[alt]="dataImg">
+              
+            `
         }).mount('#app')
     </script>
 </body>

@@ -23,8 +23,19 @@
                 dataImg: 'https://cdn.pixabay.com/photo/2022/12/12/12/58/dog-7651002_960_720.jpg', 
                 src:'src',
                 alt:'alt',
+
+                //Eventos 
+                counter: 0
               }
-            }, 
+            },
+            methods:{
+              aumentar(){
+                this.counter++
+              },
+              disminuir(){
+                this.counter--
+              }
+            },
             template:`
 
               <h1>{{titulo}}</h1>
@@ -37,7 +48,12 @@
               <div v-html="dataHTML"></div>
 
               <!-- ATRIBUTOS DE UNA IMAGEN -->
-              <img v-bind:[src]="dataImg" v-bind:[alt]="dataImg">
+              <img v-bind:[src]="dataImg" v-bind:[alt]="dataImg"><br><br><br>
+
+              <!-- EVENTOS -->
+              <h1>{{counter}}</h1>
+              <button v-on:click="aumentar()">Aumentar</button>
+              <button v-on:click="disminuir()">Disminuir</button>
               
             `
         }).mount('#app')

@@ -25,7 +25,12 @@
                 alt:'alt',
 
                 //Eventos 
-                counter: 0
+                counter: 0,
+
+                //Inputs reactivos
+                input:'Hola mundo', 
+                inputBind: 'Valor por defecto'
+
               }
             },
             methods:{
@@ -34,6 +39,9 @@
               },
               disminuir(){
                 this.counter--
+              }, 
+              reactiveValue(e){
+                this.input = e.target.value
               }
             },
             template:`
@@ -54,7 +62,16 @@
               <h1>{{counter}}</h1>
               <button v-on:click="aumentar()">Aumentar</button>
               <button v-on:click="disminuir()">Disminuir</button>
-              
+
+              <!-- INPUT MEDIANTE FUNCION-->
+              <h1>{{input}}</h1>
+              <!-- <input type="text" v-on:input="reactiveValue" v-bind:value="input"/> -->
+              <!-- Version resumida -->
+              <input type="text" @input="reactiveValue" :value="input"/>
+
+              <!-- INPUT MEDIANTE BINDING-->
+              <h1>{{inputBind}}</h1>
+              <input type="text" v-model="inputBind" />
             `
         }).mount('#app')
     </script>

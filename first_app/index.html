@@ -29,7 +29,12 @@
 
                 //Inputs reactivos
                 input:'Hola mundo', 
-                inputBind: 'Valor por defecto'
+                inputBind: 'Valor por defecto',
+
+                //Propiedad computada
+                primerNombre:'Daniel',
+                segundoNombre:'Felipe',
+                date: new Date()
 
               }
             },
@@ -42,6 +47,12 @@
               }, 
               reactiveValue(e){
                 this.input = e.target.value
+              }
+            },
+
+            computed:{
+              fullName(){
+                return this.primerNombre + " " + this.segundoNombre
               }
             },
             template:`
@@ -72,6 +83,10 @@
               <!-- INPUT MEDIANTE BINDING-->
               <h1>{{inputBind}}</h1>
               <input type="text" v-model="inputBind" />
+
+              <!-- PROPIEDAD COMPUTADA (Pipes en angular) -->
+              <h1>{{date}}</h1>
+              <h1>{{fullName}}</h1>
             `
         }).mount('#app')
     </script>

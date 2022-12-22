@@ -37,7 +37,7 @@
                 date: new Date(),
 
                 //Watchers
-                dataWatcher
+                dataWatcher: 'Hola mundo'
 
 
               }
@@ -62,8 +62,10 @@
             watch: {
 
               // El watcher debe tener el mismo nombre de la variable que quiere escuchar, y va estar pendiente cuando este cambia de valor
-              dataWatcher(){
-                console.log('Se activo')
+              dataWatcher(valorActual, valorAnterior){
+                console.log(`Se activo el watcher y su valor '${valorAnterior}' cambió a '${valorActual}'`)
+                
+                //Se puede acceder al resto de variables del data con el this por ejemplo.dataWatcher
               }
             },
             template:`

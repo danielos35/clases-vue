@@ -34,7 +34,11 @@
                 //Propiedad computada
                 primerNombre:'Daniel',
                 segundoNombre:'Felipe',
-                date: new Date()
+                date: new Date(),
+
+                //Watchers
+                dataWatcher
+
 
               }
             },
@@ -53,6 +57,13 @@
             computed:{
               fullName(){
                 return this.primerNombre + " " + this.segundoNombre
+              }
+            },
+            watch: {
+
+              // El watcher debe tener el mismo nombre de la variable que quiere escuchar, y va estar pendiente cuando este cambia de valor
+              dataWatcher(){
+                console.log('Se activo')
               }
             },
             template:`

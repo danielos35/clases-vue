@@ -54,7 +54,6 @@
                 },
 
                 /*
-                
                   CLASES
                   - Puede ser un Array o un objetos
                 */
@@ -62,7 +61,10 @@
                 clases_: {
                   clase_uno:true,
                   clase_dos:false
-                }
+                },
+
+                //CONDICIONALES
+                esVerdadero:true
               }
             },
             methods:{
@@ -129,6 +131,10 @@
 
               <!-- Clases -->
               <h1 :class="clases">Clases</h1>
+
+              <!-- CONDICIONES -->
+              <div v-if="esVerdadero" >Condicion verdadera</div>
+              <div v-else="esVerdadero" >Condicion false</div>
             `
         }).mount('#app')
     </script>

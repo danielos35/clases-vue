@@ -4,6 +4,15 @@
   <meta charset="utf-8">
   <title>VUE MODERNO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .clase_uno{
+      background: red;
+    }
+
+    .clase_dos{
+      background: green;
+    }
+  </style>
 </head>
 <body>
     <script src="https://unpkg.com/vue@next"></script>
@@ -37,9 +46,23 @@
                 date: new Date(),
 
                 //Watchers
-                dataWatcher: 'Hola mundo'
+                dataWatcher: 'Hola mundo',
 
+                //Estilos
+                estilos:{
+                  color:'#FF0000'
+                },
 
+                /*
+                
+                  CLASES
+                  - Puede ser un Array o un objetos
+                */
+                clases:['clase_uno'], 
+                clases_: {
+                  clase_uno:true,
+                  clase_dos:false
+                }
               }
             },
             methods:{
@@ -100,6 +123,12 @@
               <!-- PROPIEDAD COMPUTADA (Pipes en angular) -->
               <h1>{{date}}</h1>
               <h1>{{fullName}}</h1>
+
+              <!-- ESTILOS -->
+              <h1 :style="estilos">COLOR</h1>
+
+              <!-- Clases -->
+              <h1 :class="clases">Clases</h1>
             `
         }).mount('#app')
     </script>

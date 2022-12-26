@@ -153,6 +153,21 @@
                   :dataDesdeElPadre="item"
                 />
               </div>
+
+
+              <!-- SLOTS -->
+              
+              <v-header>
+                
+                <template v-slot:header>
+                  Hola Mundo con slot
+                </template>
+
+                
+                <template v-slot:seleccion>
+                  Otro slot
+                </template>
+              </v-header>
             `
         })
 
@@ -170,6 +185,18 @@
           template:`
             <h1>Esto viene desde otro componente</h1>
             <p>{{dataDesdeElPadre}}</p>
+          `
+        })
+
+        //SLOTS
+        app.component('v-header',{
+          template:`
+            <h1>
+              <slot name='header'></slot>
+            </h1>
+            <h2>
+              <slot name='seleccion'></slot>
+            </h2>
           `
         })
         

@@ -67,7 +67,10 @@
                 esVerdadero:true,
 
                 //ITERAR
-                lista: ['Daniel', 'Felipe', 'Marquez', 'Alvarez']
+                lista: ['Daniel', 'Felipe', 'Marquez', 'Alvarez'], 
+
+                //COMUNICACION PADRE HIJO
+
 
               }
             },
@@ -168,6 +171,9 @@
                   Otro slot
                 </template>
               </v-header>
+
+              <!-- PADRE -->
+              <v-padre/>
             `
         })
 
@@ -199,7 +205,39 @@
             </h2>
           `
         })
+  
         
+        //Comunicacion hijo -> padre
+ 
+
+        app.component('v-padre',{
+          methods:{
+            recibirDatos(datos){
+              console.log(datos)
+            }
+          },
+          template:`
+            <v-hijo
+              v-on:puente="recibirDatos($event)"
+            />
+          `
+        })
+
+        app.component('v-hijo',{
+          methods:{
+            enviarDataPadre(data){
+              this.$emit("puente",'estos son los datos');
+            }
+          },
+          template:`
+            <button
+              v-on:click="enviarDataPadre('data')"
+            >
+              Hijo
+            <button>
+          `
+        })
+
         const vm =app.mount('#app')
     </script>
 </body>
